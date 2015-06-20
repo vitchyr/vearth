@@ -6,6 +6,7 @@ package vearth
 import scala.util.Random
 import vearth.animal.{Ant, RandomAnt}
 
+/** The launcher for vearth. */
 object Vearth {
   val Width = 800
   val Height = 600

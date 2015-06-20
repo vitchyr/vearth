@@ -6,7 +6,11 @@ import scala.util.Random
  * 
  * An ant that randomly moves around.
  */
-class RandomAnt (var x: Int, var y: Int, protected val world: World) extends Ant{
+class RandomAnt (
+      protected var _x: Int,
+      protected var _y: Int,
+      protected val world: World)
+      extends Ant{
   def move() = {
     /* Given a coordinate and its max value, return the min and max values that
      * the coordinate can change by
@@ -20,11 +24,16 @@ class RandomAnt (var x: Int, var y: Int, protected val world: World) extends Ant
       }
       return (-1, 1)
     }
-    
+    def randomInt(range: (Int, Int)): Int = range match {
+      case (lower, upper) => {
+        val range = upper - lower + 1
+        return lower + Random.nextInt(range)
+      }
+    }
     val (minDX, maxDX) = getMinMax(x, width)
     val (minDY, maxDY) = getMinMax(y, height)
-    x += Random.nextInt(maxDX) + minDX
-    y += Random.nextInt(maxDY) + minDY
+    _x += randomInt(getMinMax(x, width))
+    _y += randomInt(getMinMax(y, height))
   }
   
   def radius = 5
