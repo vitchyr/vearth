@@ -6,7 +6,7 @@ package vearth
 import gui.Window
 import vearth.animal.Ant
 
-class World (val width: Int, val height: Int){
+class World (val width: Int, val height: Int) {
   var ants: List[Ant] = List[Ant]()
   val window = new Window(width, height)
 
@@ -19,7 +19,9 @@ class World (val width: Int, val height: Int){
   private def runIteration() = {
     ants foreach (a => a.update())
     ants = ants filter (_.isAlive)
+    window.clear()
     ants foreach (a => window.draw(a.x, a.y, a.radius))
+    ants foreach (a => println(a))
   }
   def run = {
     runIteration()

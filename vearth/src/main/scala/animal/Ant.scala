@@ -15,6 +15,7 @@ trait Ant extends Drawable {
   val width = world.width
   val height = world.height
   
+  override def toString() = s"Ant @ ($x, $y)"
   /** Functions to implement */
   def move()
 }
