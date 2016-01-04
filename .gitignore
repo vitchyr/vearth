@@ -60,3 +60,10 @@ docs/_build/
 
 # PyBuilder
 target/
+project/
+
+tmp*
+.classpath
+.project
+.cache-main
+*.swp
